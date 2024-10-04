@@ -47,9 +47,9 @@ include("connection.php");
           <a class="nav-link disabled" aria-disabled="true">Disabled</a>
         </li>
       </ul>
-      <form class="d-flex" role="search">
+      <form class="d-flex" action="" method="post">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <button class="btn btn-outline-success" name="submit" type="submit">Search</button>
       </form>
     </div>
   </div>
@@ -63,7 +63,7 @@ include("connection.php");
 
 <h1>Login Form</h1>
 
-<form action="login.php" method="POST">
+<form name="form" action="login.php" onsubmit="return isvalid()"  method="POST">
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Username</label>
     <input type="email" class="form-control" name="username" id="username" aria-describedby="emailHelp">
@@ -73,10 +73,37 @@ include("connection.php");
     <input type="password" name="password" class="form-control" id="password">
   </div>
  
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" name="submit" class="btn btn-primary">Submit</button>
 </form>
 
 </div>
+
+<script>
+function isvalid(){
+
+  var user = document.form.username.value;
+  var pass = document.form.password.value;
+  if(user.length=="" && pass.length==""){
+
+    alert("Username and password field is empty");
+    return false;
+  }
+
+  else{
+
+    if(user.length==""){
+
+      alert("username is empty");
+    }
+    if(pass.length==""){
+
+      alert("password is empty");
+      return false;
+    }
+  }
+}
+
+</script>
     
 </body>
 </html>
